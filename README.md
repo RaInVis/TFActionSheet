@@ -13,4 +13,4 @@ A simple and easy to use this actionSheet,just need one line code;
        
    }] show];</code></pre>
 
-![gif](<iframe height=500 width=500 src="http://imgsrc.baidu.com/forum/w%3D580/sign=1e96f9f0de2a60595210e1121835342d/0e2d06061d950a7b4d915bfd03d162d9f2d3c90c.jpg">)
+![gif](http://i1.piimg.com/4851/961d43b6fd842862.gif)
