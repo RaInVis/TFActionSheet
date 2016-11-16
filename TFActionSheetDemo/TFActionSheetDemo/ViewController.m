@@ -20,7 +20,7 @@
     [super viewDidLoad];
     
     UIButton *button1 = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button1 setTitle:@"有标题的actionSheet" forState:UIControlStateNormal];
+    [button1 setTitle:@"have title actionSheet" forState:UIControlStateNormal];
     [button1.titleLabel setFont:[UIFont systemFontOfSize:20]];
     [button1 setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [button1 setFrame:CGRectMake(0, 100, CGRectGetWidth(self.view.frame), 50)];
@@ -28,7 +28,7 @@
     
     
     UIButton *button2 = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button2 setTitle:@"无标题的actionSheet" forState:UIControlStateNormal];
+    [button2 setTitle:@"no title actionSheet" forState:UIControlStateNormal];
     [button2.titleLabel setFont:[UIFont systemFontOfSize:20]];
     [button2 setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [button2 setFrame:CGRectMake(0, 200, CGRectGetWidth(self.view.frame), 50)];
@@ -53,9 +53,9 @@
     NSAttributedString *str2 = [[NSAttributedString alloc] initWithString:@"取消" attributes:@{ NSFontAttributeName :[UIFont systemFontOfSize:17], NSForegroundColorAttributeName : [UIColor blueColor]                               }];
     NSAttributedString *str3 = [[NSAttributedString alloc] initWithString:@"不确定" attributes:@{ NSFontAttributeName :[UIFont systemFontOfSize:17], NSForegroundColorAttributeName : [UIColor yellowColor]                               }];
     [[[[[TFActionSheet alloc] initWithTitle:str cancelButtonTitle:str1] addButtonTitle:str2 buttonAction:^{
-        
+        NSLog(@"you have click the button, name:%@", str2.string);
     }] addButtonTitle:str3 buttonAction:^{
-        
+        NSLog(@"you have click the button, name:%@", str3.string);
     }] show];
 }
 
@@ -66,11 +66,14 @@
     NSAttributedString *str3 = [[NSAttributedString alloc] initWithString:@"不确定" attributes:@{ NSFontAttributeName :[UIFont systemFontOfSize:17], NSForegroundColorAttributeName : [UIColor yellowColor]                               }];
     NSAttributedString *str4 = [[NSAttributedString alloc] initWithString:@"请完成此操作" attributes:@{ NSFontAttributeName :[UIFont systemFontOfSize:17], NSForegroundColorAttributeName : [UIColor redColor]                               }];
     [[[[[[TFActionSheet alloc] initWithTitle:nil cancelButtonTitle:str1] addButtonTitle:str2 buttonAction:^{
-        
+        NSLog(@"you have click the button, name:%@", str2.string);
+
     }] addButtonTitle:str3 buttonAction:^{
-        
+        NSLog(@"you have click the button, name:%@", str3.string);
+
     }] addButtonTitle:str4 buttonAction:^{
-        
+        NSLog(@"you have click the button, name:%@", str4.string);
+
     }] show];
 }
 
@@ -84,8 +87,11 @@
     NSAttributedString *str3 = [[NSAttributedString alloc] initWithString:@"恩恩" attributes:@{ NSFontAttributeName :[UIFont systemFontOfSize:17], NSForegroundColorAttributeName : [UIColor blueColor]                               }];
    [[[[[TFActionSheet alloc] initWithTitle:str cancelButtonTitle:str2] addButtonTitle:str1 buttonAction:^{
        
-   }] addButtonTitle:str3 buttonAction:^{
+       NSLog(@"you have click the button, name:%@", str1.string);
        
+   }] addButtonTitle:str3 buttonAction:^{
+       NSLog(@"you have click the button, name:%@", str3.string);
+
    }] show];
 
 }
