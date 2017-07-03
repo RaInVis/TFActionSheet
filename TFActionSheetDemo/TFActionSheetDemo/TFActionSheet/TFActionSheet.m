@@ -10,16 +10,16 @@
 #import <objc/runtime.h>
 
 static NSString *actionSheetKey = @"actionSheetKey"; // runtimeKey
-static CGFloat const kMargin = 10; // 其他按钮与取消按钮的间距
-static CGFloat const buttonH = 50; // 按钮的高度
-static CGFloat const sideMargin = 15; // 按钮两侧间距
+static CGFloat const kMargin = 2.5; // 其他按钮与取消按钮的间距
+static CGFloat const buttonH = 60; // 按钮的高度
+static CGFloat const sideMargin = 0; // 按钮两侧间距
 static CGFloat const titleH = 75; // 标题的高度
 static CGFloat const animtionDuringTime = 0.3; // 动画时间
-static CGFloat const cornerRadius = 3.f; // 圆角
-static CGFloat const commonMargin = 0.5; // 普通按钮之间的间距
+static CGFloat const cornerRadius = 0; // 圆角
+static CGFloat const commonMargin = 1; // 普通按钮之间的间距
 static CGFloat const kAlpha = 0.4; // 透明度
 
-#define ACTION_BUTTON_COLOR [UIColor whiteColor] // button北京颜色
+#define ACTION_BUTTON_COLOR [UIColor whiteColor] // button背景颜色
 #define ACTION_BACKGROUND_COLOR [UIColor blackColor] // 背景视图透明颜色
 #define TF_ACTIONSHEET_WIDTH  [UIScreen mainScreen].bounds.size.width
 #define TF_ACTIONSHEET_HEIGHT [UIScreen mainScreen].bounds.size.height
@@ -30,7 +30,7 @@ static CGFloat const kAlpha = 0.4; // 透明度
 @property (nonatomic, strong) UIButton *cannelButton; //!< 取消按钮
 @property (nonatomic, assign) CGFloat totalHeight; //!< 总高度
 @property (nonatomic, strong) UIView *contentView; //!< 按钮视图
-@property (nonatomic, strong) UIView *backgroundView; //!< 北京视图
+@property (nonatomic, strong) UIView *backgroundView; //!< 背景视图
 @property (nonatomic, assign) NSUInteger idx; //!< 添加的button数量
 @property (nonatomic, strong) UILabel *titleLab; //!< 标题lab
 
@@ -49,8 +49,7 @@ static CGFloat const kAlpha = 0.4; // 透明度
         _titleLab.backgroundColor = [UIColor whiteColor];
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(noneAction)];
         _titleLab.userInteractionEnabled = YES;
-        [_titleLab addGestureRecognizer:tap]; 
-        
+        [_titleLab addGestureRecognizer:tap];
     }
     return _titleLab;
 }
@@ -71,7 +70,7 @@ static CGFloat const kAlpha = 0.4; // 透明度
 {
     if (!_contentView) {
         _contentView = [[UIView alloc] init];
-        _contentView.backgroundColor = [UIColor clearColor];
+        _contentView.backgroundColor = [UIColor colorWithRed:(CGFloat)237/255 green:(CGFloat)238/255 blue:(CGFloat)239/255 alpha:1];
     }
     return _contentView;
 }
@@ -120,6 +119,8 @@ static CGFloat const kAlpha = 0.4; // 透明度
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.backgroundColor = ACTION_BUTTON_COLOR;
+    button.titleLabel.numberOfLines = 0;
+    button.titleLabel.textAlignment = NSTextAlignmentCenter;
     [button setAttributedTitle:buttonTitle forState:UIControlStateNormal];
     [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:button];
@@ -180,13 +181,13 @@ static CGFloat const kAlpha = 0.4; // 透明度
             [self cutRoundingCornersToView:childView byRoundingCorners:UIRectCornerTopRight | UIRectCornerTopLeft];
         }
     }
-
+    
 }
 
 - (void)setupFrame
 {
     self.frame = CGRectMake(0, 0, TF_ACTIONSHEET_WIDTH, TF_ACTIONSHEET_HEIGHT);
-    self.cannelButton.frame = CGRectMake(sideMargin, _totalHeight - buttonH - kMargin, TF_ACTIONSHEET_WIDTH - 2*sideMargin, buttonH);
+    self.cannelButton.frame = CGRectMake(sideMargin, _totalHeight - buttonH, TF_ACTIONSHEET_WIDTH - 2*sideMargin, buttonH);
     self.contentView.frame = CGRectMake(0, TF_ACTIONSHEET_HEIGHT, TF_ACTIONSHEET_WIDTH, _totalHeight);
     self.titleLab.frame = CGRectMake(sideMargin, 0, TF_ACTIONSHEET_WIDTH - 2*sideMargin, titleH);
     [self setupButtonsFrame];
@@ -241,7 +242,7 @@ static CGFloat const kAlpha = 0.4; // 透明度
         self.backgroundView.alpha = 0;
         self.contentView.transform = CGAffineTransformMakeTranslation(0, _totalHeight);
     } completion:^(BOOL finished) {
-         [self removeFromSuperview];
+        [self removeFromSuperview];
     }];
 }
 

@@ -79,7 +79,7 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    NSAttributedString *str = [[NSAttributedString alloc] initWithString:@"请完成此请完成此次请完成此次请完成此次次操作" attributes:@{ NSFontAttributeName :[UIFont systemFontOfSize:17], NSForegroundColorAttributeName : [UIColor blackColor]                               }];
+    NSAttributedString *str = [[NSAttributedString alloc] initWithString:@"我准备测试一个很长非常长特别长非常长出其长的文字标题" attributes:@{ NSFontAttributeName :[UIFont systemFontOfSize:17], NSForegroundColorAttributeName : [UIColor blackColor]}];
     
     
     NSAttributedString *str1 = [[NSAttributedString alloc] initWithString:@"哈哈" attributes:@{ NSFontAttributeName :[UIFont systemFontOfSize:17], NSForegroundColorAttributeName : [UIColor grayColor]                               }];
