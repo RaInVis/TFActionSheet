@@ -13,4 +13,4 @@ A simple and easy to use this actionSheet,just need one line code;
        
    }] show];</code></pre>
 
-![gif](http://i1.piimg.com/4851/961d43b6fd842862.gif)
+![gif](https://github.com/RaInvis/TFActionSheet/blob/master/TFActionSheetDemo/TFActionSheetDemo/actionSheet.gif)
